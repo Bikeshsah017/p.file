@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p.file - Private Photo Storage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-container">
+                    <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Shield Base -->
+                        <path class="shield-path" d="M50 5 L20 15 L20 45 Q20 65 35 75 L50 85 L65 75 Q80 65 80 45 L80 15 Z" 
+                              fill="url(#shieldGradient)" stroke="url(#shieldStroke)" stroke-width="2"/>
+                        
+                        <!-- Lock Icon -->
+                        <rect class="lock-body" x="40" y="50" width="20" height="15" rx="2" fill="url(#lockGradient)"/>
+                        <path class="lock-top" d="M45 50 Q45 45 50 45 Q55 45 55 50" stroke="url(#lockGradient)" stroke-width="2" fill="none"/>
+                        <circle class="lock-keyhole" cx="50" cy="57" r="2" fill="white"/>
+                        
+                        <!-- Security Rays -->
+                        <g class="security-rays">
+                            <path class="ray ray1" d="M50 20 L50 10" stroke="url(#rayGradient)" stroke-width="2" opacity="0.8"/>
+                            <path class="ray ray2" d="M50 20 L45 15" stroke="url(#rayGradient)" stroke-width="2" opacity="0.6"/>
+                            <path class="ray ray3" d="M50 20 L55 15" stroke="url(#rayGradient)" stroke-width="2" opacity="0.6"/>
+                            <path class="ray ray4" d="M50 20 L42 18" stroke="url(#rayGradient)" stroke-width="2" opacity="0.4"/>
+                            <path class="ray ray5" d="M50 20 L58 18" stroke="url(#rayGradient)" stroke-width="2" opacity="0.4"/>
+                        </g>
+                        
+                        <!-- Gradient Definitions -->
+                        <defs>
+                            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="shieldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5a6fd8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#6a4c93;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+                                <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:0.8" />
+                            </linearGradient>
+                            <linearGradient id="rayGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+                                <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>p.file</h1>
+                    <span class="tagline">Private & Secure</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#upload" class="nav-link">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Upload</span>
+                </a>
+                <a href="#gallery" class="nav-link">
+                    <i class="fas fa-images"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="#security" class="nav-link">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Security</span>
+                </a>
+                <a href="#settings" class="nav-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-menu">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#help"><i class="fas fa-question-circle"></i> Help</a>
+                        <hr>
+                        <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <h2>Your Photos, Your Privacy</h2>
+                    <p>Store your precious memories securely with end-to-end encryption. Your photos never leave your device unencrypted.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-lock"></i>
+                            <h3>End-to-End Encryption</h3>
+                            <p>Your photos are encrypted before leaving your device</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-eye-slash"></i>
+                            <h3>Zero-Knowledge Architecture</h3>
+                            <p>We can't see your photos, even if we wanted to</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-cloud"></i>
+                            <h3>Secure Cloud Storage</h3>
+                            <p>Your encrypted photos are safely stored in the cloud</p>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="showSection('upload')">
+                        <i class="fas fa-upload"></i>
+                        Start Securing Your Photos
+                    </button>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="upload" class="section">
+                <div class="upload-container">
+                    <h2>Upload Your Photos Securely</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drop your photos here</h3>
+                            <p>or click to browse files</p>
+                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                            <button class="browse-button" onclick="document.getElementById('fileInput').click()">
+                                Browse Files
+                            </button>
+                        </div>
+                    </div>
+                    <div class="upload-options">
+                        <div class="option">
+                            <label>
+                                <input type="checkbox" id="localEncryption" checked>
+                                <span class="checkmark"></span>
+                                Encrypt locally before upload
+                            </label>
+                        </div>
+                        <div class="option">
+                            <label>
+                                <input type="checkbox" id="autoDelete" checked>
+                                <span class="checkmark"></span>
+                                Auto-delete from device after upload
+                            </label>
+                        </div>
+                    </div>
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Uploading...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="section">
+                <div class="gallery-container">
+                    <h2>Your Secure Photo Gallery</h2>
+                    <div class="gallery-controls">
+                        <input type="text" id="searchInput" placeholder="Search your photos..." class="search-input">
+                        <button class="refresh-button" onclick="loadGallery()">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                    <div class="gallery-grid" id="galleryGrid">
+                        <div class="empty-state">
+                            <i class="fas fa-images"></i>
+                            <h3>No photos yet</h3>
+                            <p>Upload your first photo to get started</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section id="security" class="section">
+                <div class="security-container">
+                    <h2>Privacy & Security</h2>
+                    <div class="security-dashboard">
+                        <div class="security-status">
+                            <div class="status-card">
+                                <div class="status-indicator active"></div>
+                                <h3>Encryption Status</h3>
+                                <p>All files encrypted</p>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-indicator active"></div>
+                                <h3>Privacy Mode</h3>
+                                <p>Zero-knowledge active</p>
+                            </div>
+                            <div class="status-card">
+                                <div class="status-indicator active"></div>
+                                <h3>Secure Connection</h3>
+                                <p>TLS 1.3 enabled</p>
+                            </div>
+                        </div>
+                        <div class="encryption-controls">
+                            <h3>Encryption Settings</h3>
+                            <div class="control-group">
+                                <label>
+                                    <input type="radio" name="encryption" value="aes256" checked>
+                                    <span class="radio-custom"></span>
+                                    AES-256 (Recommended)
+                                </label>
+                                <label>
+                                    <input type="radio" name="encryption" value="aes128">
+                                    <span class="radio-custom"></span>
+                                    AES-128 (Faster)
+                                </label>
+                                <label>
+                                    <input type="radio" name="encryption" value="chacha20">
+                                    <span class="radio-custom"></span>
+                                    ChaCha20 (Mobile optimized)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="security-info">
+                        <div class="security-feature">
+                            <i class="fas fa-key"></i>
+                            <div>
+                                <h3>Client-Side Encryption</h3>
+                                <p>All photos are encrypted using AES-256 encryption before leaving your device. Only you have the decryption key.</p>
+                            </div>
+                        </div>
+                        <div class="security-feature">
+                            <i class="fas fa-user-shield"></i>
+                            <div>
+                                <h3>No Data Collection</h3>
+                                <p>We don't collect, track, or analyze your personal data. Your privacy is our priority.</p>
+                            </div>
+                        </div>
+                        <div class="security-feature">
+                            <i class="fas fa-server"></i>
+                            <div>
+                                <h3>Secure Infrastructure</h3>
+                                <p>Our servers use industry-standard security measures and are regularly audited for vulnerabilities.</p>
+                            </div>
+                        </div>
+                        <div class="security-feature">
+                            <i class="fas fa-code-branch"></i>
+                            <div>
+                                <h3>Open Source</h3>
+                                <p>Our encryption and security code is open source, allowing security experts to verify our claims.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="security-stats">
+                        <div class="stat">
+                            <h3>0</h3>
+                            <p>Data breaches</p>
+                        </div>
+                        <div class="stat">
+                            <h3>256-bit</h3>
+                            <p>AES encryption</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Client-side encryption</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="settings-container">
+                    <h2>Settings & Preferences</h2>
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3><i class="fas fa-palette"></i> Appearance</h3>
+                            <div class="setting-item">
+                                <label>Theme</label>
+                                <select id="themeSelect">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="auto">Auto</option>
+                                </select>
+                            </div>
+                            <div class="setting-item">
+                                <label>Accent Color</label>
+                                <div class="color-picker">
+                                    <input type="color" id="accentColor" value="#667eea">
+                                    <span>#667eea</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h3><i class="fas fa-shield-alt"></i> Privacy</h3>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="autoEncrypt" checked>
+                                    <span class="checkmark"></span>
+                                    Auto-encrypt all uploads
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="deleteAfterUpload" checked>
+                                    <span class="checkmark"></span>
+                                    Delete from device after upload
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" id="enableAnalytics">
+                                    <span class="checkmark"></span>
+                                    Enable privacy-focused analytics
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h3><i class="fas fa-cog"></i> Storage</h3>
+                            <div class="storage-info">
+                                <div class="storage-bar">
+                                    <div class="storage-fill" style="width: 35%"></div>
+                                </div>
+                                <p>2.1 GB of 6 GB used</p>
+                            </div>
+                            <div class="setting-item">
+                                <label>Auto-cleanup</label>
+                                <select id="cleanupSelect">
+                                    <option value="never">Never</option>
+                                    <option value="30">After 30 days</option>
+                                    <option value="90">After 90 days</option>
+                                    <option value="365">After 1 year</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h3><i class="fas fa-download"></i> Export</h3>
+                            <div class="setting-item">
+                                <button class="export-btn" onclick="exportAllPhotos()">
+                                    <i class="fas fa-download"></i>
+                                    Export All Photos
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <button class="export-btn" onclick="exportEncryptionKey()">
+                                    <i class="fas fa-key"></i>
+                                    Export Encryption Key
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 p.file - Your privacy matters</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Photo Modal -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Photo">
+            <div class="modal-actions">
+                <button class="action-btn" onclick="downloadPhoto()">
+                    <i class="fas fa-download"></i>
+                    Download
+                </button>
+                <button class="action-btn delete" onclick="deletePhoto()">
+                    <i class="fas fa-trash"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
